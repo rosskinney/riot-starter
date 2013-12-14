@@ -4,22 +4,28 @@
 </head>
 <body>
 
+
 <!-- HTML -->
+<div id="store">
+  <div class="item">
+    <p></p>
+  </div>
+</div>
 
 <div id="templates">
-  <!-- TEMPLATES -->
   <script class="item" type="text/template">
-    <div class="store">
+    <div class="item">
       <p>{ name } - ${ price }</p>
     </div>
   </script>
 </div>
 
 <form action="">
-Name: <input type="text" name="name"><br>
-Price: <input type="text" name="price">
+Name: <input type="text" id="name" name="name"><br>
+Price: <input type="text" id="price" name="price">
+<input type="submit" id="submit" name="submit" value="Submit Form">
 </form>
-<input type="submit" name="submit" value="Submit Form">
+
 <script src="vendor/js/jquery-1.10.2.min.js"></script>
 <script src="vendor/js/riot.js"></script>
 <script src="js/main.js"></script>
