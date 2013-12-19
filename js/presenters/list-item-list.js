@@ -24,18 +24,28 @@
     listItems.destroy(index);
   });
 
-  /*/ DELETE THIS LINE FOR THE EXTENSION
+
   // When the user clicks the edit button, toggle the 'edit' css
   // class; the css does all the heavy lifting
+  debugger
   $root.on('click', ".list-item .edit", function () {
     $(this).closest('.list-item').toggleClass('edit');
   });
+
+  $root.on('click', ".list-item .save-edit", function () {
+    var $update = $(this).closest('.list-item');
+    var index = $update.index();
+    var name = $('.edit-name', $update).val();
+    var category = $('.edit-category', $update).val();
+    console.log('saving', name, category);
+    listItems.update(index,name,category);
+  })
   /**/
 
 // - - - - - - - - - -
 // Model Interactions
 // - - - - - - - - - -
-
+  debugger
   // When we hear the 'create' event, that means a new list item was just
   // created. In this app, list items are created in list-item-form.js
   listItems.on('create', function (item) {
@@ -50,11 +60,11 @@
     $('.list-item', $root).eq(itemIndex).remove();
   });
 
-  /*/ DELETE THIS LINE FOR THE EXTENSION
-  // When we hear the 'update' event, that means a list item's data
-  // has just updated. We need to update the page to reflect that,
-  // as well as remove the 'edit' class so the edit form disappears
-  listItems.on(...);
-  /**/
+  listItems.on('update', function (updatedItem, index) {
+     $('.li-name', $root).eq(index).text(updatedItem.name);
+     $('.li-category', $root).eq(index).text(updatedItem.category);
+     $('.list-item', $root).eq(index).toggleClass('edit');
+     // $('.list-item', $root).text(updatedItem.name);
+  });
 
 })();
