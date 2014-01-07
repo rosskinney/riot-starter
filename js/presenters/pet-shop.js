@@ -42,6 +42,13 @@
       root: $petRoot.find('.comments')
     });
 
+    // Next we create a presenter for this pet's list of comments,
+    // using the same type of arguments as above.
+    var petScore = new PetScorePresenter({
+      comments: petComments,
+      root: $petRoot.find('.comments')
+    });
+
     // Initialize with a single comment for easier "like" testing
     petComments.create({
       author: 'Bob',
